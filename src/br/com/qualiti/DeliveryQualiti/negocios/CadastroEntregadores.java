@@ -49,10 +49,13 @@ public class CadastroEntregadores implements ICadastroEntregador {
 			throw new CampoObrigatorioNãoInformadoException("Nome do entregador não informado");
 		}
 		
-		if (!entregador.getNome().matches("[w]+")) {
-			throw new CampoPreenchidoIncorretamenteException("");
+		if (entregador.getNome().matches("^[w]+")) {
+			throw new CampoPreenchidoIncorretamenteException("Não pode conter numeros");
 		}
 		
+		if(entregador.getMatricula() == null || entregador.getMatricula().isEmpty()){
+			throw new CampoObrigatorioNãoInformadoException("Matricula não informada!");
+		}
 		
 		if (entregador.getMatricula().matches("^[d]+")) {
 			throw new CampoPreenchidoIncorretamenteException("Matricula deve conter apenas numeros");
