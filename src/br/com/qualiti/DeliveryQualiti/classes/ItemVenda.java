@@ -3,7 +3,7 @@ package br.com.qualiti.DeliveryQualiti.classes;
 public class ItemVenda {
 	
 	
-	private int sequencial;
+	private Integer sequencial;
 	private Produto produto;
 	private double quantidade;
 	
@@ -11,11 +11,11 @@ public class ItemVenda {
 		// TODO Auto-generated constructor stub
 	}
 
-	public int getSequencial() {
+	public Integer getSequencial() {
 		return sequencial;
 	}
 
-	public void setSequencial(int sequencial) {
+	public void setSequencial(Integer sequencial) {
 		this.sequencial = sequencial;
 	}
 

@@ -3,7 +3,7 @@ import java.util.Date;
 
 public class Produto {
 	
-	private int codigo;
+	private Integer codigo;
 	private String nome;
 	private double precoUnitario;
 	private Date dataValidade;
@@ -12,11 +12,11 @@ public class Produto {
 		// TODO Auto-generated constructor stub
 	}
 
-	public int getCodigo() {
+	public Integer getCodigo() {
 		return codigo;
 	}
 
-	public void setCodigo(int codigo) {
+	public void setCodigo(Integer codigo) {
 		this.codigo = codigo;
 	}
 
