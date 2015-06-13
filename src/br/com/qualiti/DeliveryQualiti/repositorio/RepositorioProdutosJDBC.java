@@ -1,56 +1,39 @@
 package br.com.qualiti.DeliveryQualiti.repositorio;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
 import br.com.qualiti.DeliveryQualiti.classes.Produto;
 import br.com.qualiti.DeliveryQualiti.interfaces.Repositorio;
 
-public class RepositorioProdutosColecaoSet implements Repositorio<Produto>{
-	
-	private Set repositorio;
-	
-	public RepositorioProdutosColecaoSet() {
-		repositorio = new HashSet();
-	}
+public class RepositorioProdutosJDBC implements Repositorio<Produto>{
 
 	@Override
 	public boolean existe(Serializable chave) throws Exception {
 		// TODO Auto-generated method stub
-		return procurar(chave) != null;
+		return false;
 	}
 
 	@Override
 	public void inserir(Produto entidade) throws Exception {
-		repositorio.add(entidade);
+		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void atualizar(Produto entidade) throws Exception {
-		if(repositorio.contains(entidade)){
-			Produto p = procurar(entidade.getCodigo());
-			repositorio.remove(p);
-			repositorio.add(entidade);
-		}
+		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void remover(Serializable chave) throws Exception {
-		repositorio.remove(procurar(chave));
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
 	public Produto procurar(Serializable chave) throws Exception {
-		Produto aux = null;
-		for(Object p : repositorio){
-			aux = (Produto)p;
-			if(aux.getCodigo() == chave){
-				return aux;
-			}
-		}
+		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -59,7 +42,5 @@ public class RepositorioProdutosColecaoSet implements Repositorio<Produto>{
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	
 
 }

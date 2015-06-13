@@ -5,16 +5,22 @@ import br.com.qualiti.DeliveryQualiti.Exception.CampoObrigatorioNãoInformadoExc
 import br.com.qualiti.DeliveryQualiti.Exception.CampoPreenchidoIncorretamenteException;
 import br.com.qualiti.DeliveryQualiti.classes.Cliente;
 import br.com.qualiti.DeliveryQualiti.interfaces.ICadastroClientes;
+import br.com.qualiti.DeliveryQualiti.interfaces.Repositorio;
 import br.com.qualiti.DeliveryQualiti.repositorio.RepositorioClientesArray;
-import br.com.qualiti.DeliveryQualiti.util.Util;
 
 public class CadastroClientes implements ICadastroClientes {
 
 
-	private RepositorioClientesArray repositorio;
+	private Repositorio<Cliente> repositorio;
 
-	public CadastroClientes(RepositorioClientesArray repositorio){
+	public CadastroClientes(Repositorio<Cliente> repositorio){
 		this.repositorio = repositorio;
+	}
+	
+	@Override
+	public boolean existe(String cpf) throws Exception {
+		// TODO Auto-generated method stub
+		return repositorio.existe(cpf);
 	}
 
 	public void inserir(Cliente cliente) throws Exception{
@@ -38,7 +44,7 @@ public class CadastroClientes implements ICadastroClientes {
 	}
 
 	public Cliente[] buscarTodosClientes() throws Exception{
-		return repositorio.buscarTodosClientes();
+		return repositorio.buscarTodos();
 	}
 
 	public static  final boolean validar(Cliente cliente)  throws Exception{
@@ -93,6 +99,8 @@ public class CadastroClientes implements ICadastroClientes {
 		}*/
 		return true;
 	}
+
+
 
 
 }

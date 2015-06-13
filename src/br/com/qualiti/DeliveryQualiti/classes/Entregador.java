@@ -1,5 +1,7 @@
 package br.com.qualiti.DeliveryQualiti.classes;
 
+import java.io.Serializable;
+
 public class Entregador  extends Pessoa{
 	
 	private String nome;
@@ -60,6 +62,12 @@ public class Entregador  extends Pessoa{
 
 	public void setQuantidadeEntregas(int quantidadeEntregas) {
 		this.quantidadeEntregas = quantidadeEntregas;
+	}
+
+	@Override
+	public Serializable getId() {
+		// TODO Auto-generated method stub
+		return getMatricula();
 	}
 
 

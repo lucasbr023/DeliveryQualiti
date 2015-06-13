@@ -1,5 +1,7 @@
 package br.com.qualiti.DeliveryQualiti.classes;
 
+import java.io.Serializable;
+
 public class Endereco {
 
 
@@ -71,6 +73,16 @@ public class Endereco {
 	public void setComplemento(String complemento) {
 		this.complemento = complemento;
 	}
+
+	@Override
+	public String toString() {
+		return "Endereco [logradouro=" + logradouro + ", numero=" + numero
+				+ ", bairro=" + bairro + ", cidade=" + cidade + ", estado="
+				+ estado + ", cep=" + cep + ", complemento=" + complemento
+				+ "]";
+	}
+
+	
 	
 	
 

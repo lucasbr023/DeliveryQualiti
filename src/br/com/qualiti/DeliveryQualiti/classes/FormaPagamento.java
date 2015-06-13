@@ -1,6 +1,8 @@
 package br.com.qualiti.DeliveryQualiti.classes;
 
-public class FormaPagamento {
+import java.io.Serializable;
+
+public class FormaPagamento implements EntidadeBasica {
 	
 	private Integer codigo;
 	private String nome;
@@ -23,6 +25,17 @@ public class FormaPagamento {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	@Override
+	public Serializable getId() {
+		// TODO Auto-generated method stub
+		return getCodigo();
+	}
+
+	@Override
+	public String toString() {
+		return "FormaPagamento [codigo=" + codigo + ", nome=" + nome + "]";
 	}
 
 	

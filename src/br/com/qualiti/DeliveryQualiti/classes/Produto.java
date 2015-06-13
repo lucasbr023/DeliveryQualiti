@@ -1,7 +1,8 @@
 package br.com.qualiti.DeliveryQualiti.classes;
+import java.io.Serializable;
 import java.util.Date;
 
-public class Produto {
+public class Produto implements EntidadeBasica {
 	
 	private Integer codigo;
 	private String nome;
@@ -43,6 +44,21 @@ public class Produto {
 	public void setDataValidade(Date dataValidade) {
 		this.dataValidade = dataValidade;
 	}
+
+	@Override
+	public Serializable getId() {
+		// TODO Auto-generated method stub
+		return getCodigo();
+	}
+
+	@Override
+	public String toString() {
+		return "Produto [codigo=" + codigo + ", nome=" + nome
+				+ ", precoUnitario=" + precoUnitario + ", dataValidade="
+				+ dataValidade + "]";
+	}
+	
+	
 	
 	
 

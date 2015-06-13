@@ -1,50 +1,48 @@
 package br.com.qualiti.DeliveryQualiti.repositorio;
 
 import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
 
 import br.com.qualiti.DeliveryQualiti.classes.Pedido;
 import br.com.qualiti.DeliveryQualiti.interfaces.Repositorio;
 
-public class RepositorioPedidosColecaoMap implements Repositorio<Pedido>{
-	
-	private Map repositorio;
-	public RepositorioPedidosColecaoMap() {
-		this.repositorio = new HashMap();
-	}	
-	
-	
+public class RepositorioPedidosJDBC implements Repositorio<Pedido>{
+
 	@Override
 	public boolean existe(Serializable chave) throws Exception {
-		return this.repositorio.containsKey(chave);
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	@Override
 	public void inserir(Pedido entidade) throws Exception {
-		this.repositorio.put(entidade.getCodigo(), entidade);
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
 	public void atualizar(Pedido entidade) throws Exception {
-		this.repositorio.put(entidade.getCodigo(), entidade );
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
 	public void remover(Serializable chave) throws Exception {
-		this.repositorio.remove(chave);
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
 	public Pedido procurar(Serializable chave) throws Exception {
-		return (Pedido) this.repositorio.get(chave);
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public Pedido[] buscarTodos() throws Exception {
-		return (Pedido[]) this.repositorio.values().toArray(new Pedido[this.repositorio.size()]);
+		// TODO Auto-generated method stub
+		return null;
 	}
 
-
+	
 
 }

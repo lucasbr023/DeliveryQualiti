@@ -1,48 +1,61 @@
 package br.com.qualiti.DeliveryQualiti.repositorio;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import br.com.qualiti.DeliveryQualiti.classes.Entregador;
 import br.com.qualiti.DeliveryQualiti.interfaces.Repositorio;
 
 public class RepositorioEntregadoresColecaoSet implements Repositorio<Entregador> {
 
-	@Override
-	public boolean existe(Serializable chave) throws Exception {
-		// TODO Auto-generated method stub
-		return false;
+private Set repositorio;
+	
+	public RepositorioEntregadoresColecaoSet() {
+		repositorio = new HashSet();
 	}
 
 	@Override
-	public void inserir(Entregador entidade) throws Exception {
+	public boolean existe(Serializable matricula) throws Exception {
 		// TODO Auto-generated method stub
+		return procurar(matricula) != null;
+	}
+
+	@Override
+	public void inserir(Entregador entregador) throws Exception {
+		repositorio.add(entregador);
 		
 	}
 
 	@Override
-	public void atualizar(Entregador entidade) throws Exception {
-		// TODO Auto-generated method stub
-		
+	public void atualizar(Entregador entregador) throws Exception {
+		if(repositorio.contains(entregador)){
+			Entregador e = procurar(entregador.getMatricula());
+			repositorio.remove(e);
+			repositorio.add(entregador);
+		}
 	}
 
 	@Override
-	public void remover(Serializable chave) throws Exception {
-		// TODO Auto-generated method stub
-		
+	public void remover(Serializable matricula) throws Exception {
+		repositorio.remove(procurar(matricula));
 	}
 
 	@Override
-	public Entregador procurar(Serializable chave) throws Exception {
-		// TODO Auto-generated method stub
+	public Entregador procurar(Serializable matricula) throws Exception {
+		Entregador aux = null;
+		for(Object e : repositorio){
+			aux = (Entregador) e;
+			if(aux.getMatricula() == matricula){
+				return aux;
+			}
+		}
 		return null;
 	}
 
 	@Override
 	public Entregador[] buscarTodos() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return (Entregador[]) repositorio.toArray(new Entregador[repositorio.size()]);
 	}
-
-	
 
 }

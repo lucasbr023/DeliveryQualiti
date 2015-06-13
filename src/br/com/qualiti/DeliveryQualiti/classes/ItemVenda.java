@@ -34,6 +34,15 @@ public class ItemVenda {
 	public void setQuantidade(double quantidade) {
 		this.quantidade = quantidade;
 	}
+
+	@Override
+	public String toString() {
+		return "ItemVenda [sequencial=" + sequencial + ", produto=" + produto
+				+ ", quantidade=" + quantidade + "]";
+	}
+	
+	
+	
 	
 	
 }

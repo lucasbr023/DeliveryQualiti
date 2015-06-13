@@ -1,16 +1,20 @@
 package br.com.qualiti.DeliveryQualiti.classes;
 
+import java.io.Serializable;
+
 /**
  * @author lucas
  *
  */
-public class Cliente extends Pessoa{
+public class Cliente extends Pessoa {
+
+
+	
 
 
 	private Endereco endereco;
 	private String celular;
 	private String telefone;
-	private ItemVenda item;
 	private String Email;
 
 	public String getTelefone() {
@@ -44,13 +48,6 @@ public class Cliente extends Pessoa{
 		this.celular = celular;
 	}
 
-	public ItemVenda getItem() {
-		return item;
-	}
-
-	public void setItem(ItemVenda item) {
-		this.item = item;
-	}
 
 
 	public String getEmail() {
@@ -63,7 +60,19 @@ public class Cliente extends Pessoa{
 	}
 
 
+	@Override
+	public Serializable getId() {
+		return getCpf();
+	}
 	
+	@Override
+	public String toString() {
+		return "Cliente [endereco=" + endereco + ", celular=" + celular
+				+ ", telefone=" + telefone + ", Email=" + Email + "]";
+	}
+
+
+
 
 
 

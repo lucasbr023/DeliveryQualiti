@@ -6,6 +6,7 @@ import br.com.qualiti.DeliveryQualiti.classes.FormaPagamento;
 import br.com.qualiti.DeliveryQualiti.classes.Pedido;
 import br.com.qualiti.DeliveryQualiti.classes.Produto;
 import br.com.qualiti.DeliveryQualiti.repositorio.RepositorioClientesArray;
+import br.com.qualiti.DeliveryQualiti.repositorio.RepositorioClientesJDBC;
 import br.com.qualiti.DeliveryQualiti.repositorio.RepositorioEntregadoresArray;
 import br.com.qualiti.DeliveryQualiti.repositorio.RepositorioFormasPagamentoArray;
 import br.com.qualiti.DeliveryQualiti.repositorio.RepositorioPedidosArray;
@@ -36,7 +37,7 @@ public class Fachada {
 	}
 
 	private void init() {
-		cadastroClientes = new CadastroClientes(new RepositorioClientesArray());
+		cadastroClientes = new CadastroClientes(new RepositorioClientesJDBC());
 		cadastroEntregadores = new CadastroEntregadores(new RepositorioEntregadoresArray());
 		cadastroFormasPagamento = new CadastroFormasPagamento(new RepositorioFormasPagamentoArray());
 		cadastroPedidos = new CadastroPedidos(new RepositorioPedidosArray());

@@ -2,16 +2,11 @@ package br.com.qualiti.DeliveryQualiti.classes;
 import java.util.Date;
 
 
-public abstract class Pessoa {
+public abstract class Pessoa implements EntidadeBasica{
 	private String nome;
 	private String sobrenome;
 	private String cpf;
 	private Date dataNascimento;
-	
-	
-	
-	
-
 	
 
 	
@@ -51,6 +46,14 @@ public abstract class Pessoa {
 	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
+
+	@Override
+	public String toString() {
+		return "Pessoa [nome=" + nome + ", sobrenome=" + sobrenome + ", cpf="
+				+ cpf + ", dataNascimento=" + dataNascimento + "]";
+	}
+	
+	
 
 
 }

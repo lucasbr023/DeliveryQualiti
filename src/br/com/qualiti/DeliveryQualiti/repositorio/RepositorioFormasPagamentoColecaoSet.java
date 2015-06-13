@@ -1,46 +1,61 @@
 package br.com.qualiti.DeliveryQualiti.repositorio;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import br.com.qualiti.DeliveryQualiti.classes.FormaPagamento;
 import br.com.qualiti.DeliveryQualiti.interfaces.Repositorio;
 
 public class RepositorioFormasPagamentoColecaoSet implements Repositorio<FormaPagamento>{
 
+	private Set repositorio;
+	
+	public RepositorioFormasPagamentoColecaoSet() {
+		repositorio = new HashSet();
+	}
+	
 	@Override
 	public boolean existe(Serializable chave) throws Exception {
 		// TODO Auto-generated method stub
-		return false;
+		return procurar(chave) != null;
 	}
 
 	@Override
 	public void inserir(FormaPagamento entidade) throws Exception {
-		// TODO Auto-generated method stub
-		
+		repositorio.add(entidade);
 	}
 
 	@Override
 	public void atualizar(FormaPagamento entidade) throws Exception {
-		// TODO Auto-generated method stub
-		
+		if(repositorio.contains(entidade)){
+			FormaPagamento formaPagamento = procurar(entidade.getCodigo());
+			repositorio.remove(formaPagamento);
+			repositorio.add(entidade);
+		}
 	}
 
 	@Override
 	public void remover(Serializable chave) throws Exception {
-		// TODO Auto-generated method stub
-		
+		repositorio.remove(procurar(chave));
 	}
 
 	@Override
 	public FormaPagamento procurar(Serializable chave) throws Exception {
-		// TODO Auto-generated method stub
+		FormaPagamento aux = null;
+		for(Object f : repositorio){
+			aux = (FormaPagamento) f;
+			if(aux.getCodigo() == chave){
+				return aux;
+			}
+		}
 		return null;
 	}
 
 	@Override
 	public FormaPagamento[] buscarTodos() throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return (FormaPagamento[])repositorio.toArray(new FormaPagamento[repositorio.size()]);
 	}
 
 

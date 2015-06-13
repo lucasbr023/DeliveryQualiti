@@ -1,11 +1,13 @@
 package br.com.qualiti.DeliveryQualiti.classes;
 
+import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Date;
 
 import br.com.qualiti.DeliveryQualiti.util.StatusPedido;
 
 
-public class Pedido {
+public class Pedido implements EntidadeBasica {
 	
 	private Integer codigo;
 	private Date dataPedido;
@@ -88,6 +90,23 @@ public class Pedido {
 
 	public Pedido() {
 		// TODO Auto-generated constructor stub
+	}
+
+
+	@Override
+	public Serializable getId() {
+		// TODO Auto-generated method stub
+		return getCodigo();
+	}
+
+
+	@Override
+	public String toString() {
+		return "Pedido [codigo=" + codigo + ", dataPedido=" + dataPedido
+				+ ", cliente=" + cliente + ", entregador=" + entregador
+				+ ", formaPagamento=" + formaPagamento + ", itens="
+				+ Arrays.toString(itens) + ", statusPedido=" + statusPedido
+				+ "]";
 	}
 	
 	

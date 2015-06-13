@@ -22,7 +22,7 @@ public class RepositorioEntregadoresColecaoMap implements Repositorio<Entregador
 
 	@Override
 	public void inserir(Entregador entregador) throws Exception {
-		//this.repositorio.put(entregador.getMatricula(), entregador);
+		this.repositorio.put(entregador.getMatricula(), entregador);
 	}
 
 	@Override
@@ -32,21 +32,18 @@ public class RepositorioEntregadoresColecaoMap implements Repositorio<Entregador
 
 	@Override
 	public void remover(Serializable matricula) throws Exception {
-		// TODO Auto-generated method stub
+		this.repositorio.remove(matricula);
 		
 	}
 
 	@Override
 	public Entregador procurar(Serializable matricula) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return(Entregador) this.repositorio.get(matricula);
 	}
 
 	@Override
 	public Entregador[] buscarTodos() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
+		return (Entregador[]) this.repositorio.values().toArray(new Entregador[this.repositorio.size()]);	}
 
 	
 

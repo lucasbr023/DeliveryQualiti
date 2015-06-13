@@ -1,46 +1,62 @@
 package br.com.qualiti.DeliveryQualiti.repositorio;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import br.com.qualiti.DeliveryQualiti.classes.Cliente;
 import br.com.qualiti.DeliveryQualiti.interfaces.Repositorio;
 
-public class RepositorioClientesColecaoSet implements Repositorio<Cliente>{
+public class RepositorioClientesColecaoSet implements Repositorio<Cliente>{;
+	
+	private Set repositorio;
+	
+	public RepositorioClientesColecaoSet() {
+		repositorio = new HashSet();
+	}
 
 	@Override
 	public boolean existe(Serializable chave) throws Exception {
 		// TODO Auto-generated method stub
-		return false;
+		return procurar(chave) != null;
 	}
 
 	@Override
 	public void inserir(Cliente entidade) throws Exception {
-		// TODO Auto-generated method stub
-		
+		repositorio.add(entidade);
 	}
 
 	@Override
 	public void atualizar(Cliente entidade) throws Exception {
-		// TODO Auto-generated method stub
+		if(repositorio.contains(entidade)){
+			Cliente c = procurar(entidade.getCpf());
+			repositorio.remove(entidade);
+			repositorio.add(entidade);
+		}
 		
 	}
 
 	@Override
 	public void remover(Serializable chave) throws Exception {
-		// TODO Auto-generated method stub
-		
+		repositorio.remove(procurar(chave));
 	}
 
 	@Override
 	public Cliente procurar(Serializable chave) throws Exception {
-		// TODO Auto-generated method stub
+		Cliente aux = null;
+		for(Object c : repositorio){
+			aux = (Cliente) c;
+			if(aux.getCpf() == chave){
+				return aux;
+			}
+		}
 		return null;
 	}
 
 	@Override
 	public Cliente[] buscarTodos() throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return (Cliente[]) repositorio.toArray(new Cliente[repositorio.size()]);
 	}
 
 	
